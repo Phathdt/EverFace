@@ -1,6 +1,6 @@
 import http from "./httpService";
 
-const apiUrl = "http://5cbc10cafa84180014bdb218.mockapi.io";
+const apiUrl = "https://5cbc10cafa84180014bdb218.mockapi.io";
 
 export async function getListNewCustomer() {
   return await http.get(`${apiUrl}/current_customers`);
