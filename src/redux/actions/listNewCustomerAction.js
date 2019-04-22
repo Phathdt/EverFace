@@ -10,22 +10,22 @@ export const getListNewCustomer = () => {
       .then(response => {
         dispatch({ type: Constant.GET_SUCCESS, customers: response });
       })
-      .catch(error => {
+      .catch(_error => {
         dispatch({ type: Constant.GET_FAILED });
       });
   };
 };
 
 export const callCustomer = id => {
-  return (dispatch, getState) => {
+  return (dispatch, _getState) => {
     dispatch({ type: Constant.START_CALL });
 
     service
       .callCustomer(id)
-      .then(response => {
+      .then(_response => {
         dispatch({ type: Constant.CALL_SUCCESS });
       })
-      .catch(error => {
+      .catch(_error => {
         dispatch({ type: Constant.CALL_FAILED });
       });
   };

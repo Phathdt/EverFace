@@ -8,6 +8,7 @@ axios.interceptors.response.use(
 
     if (error.code !== 0) {
       toast.error(error.message);
+      logger.log(error.message);
 
       return Promise.reject({ messages: error.message });
     } else {
