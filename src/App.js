@@ -11,19 +11,17 @@ import NotFound from "./pages/NotFound";
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App container h-100">
         <ToastContainer />
         <NavBar />
         <Router>
-          <div>
-            <Switch>
-              <Route exact path="/" component={DashBoardPage} />
-              <Route path="/cashier" component={CashierPage} />
-              <Route path="/customers" component={ListCustomerPage} />
-              <Route path="/detail_customers" component={DetailCustomerPage} />
-              <Route path="*" component={NotFound} />
-            </Switch>
-          </div>
+          <Switch>
+            <Route exact path="/" component={DashBoardPage} />
+            <Route path="/cashier" component={CashierPage} />
+            <Route path="/customers" component={ListCustomerPage} />
+            <Route path="/detail_customers" component={DetailCustomerPage} />
+            <Route path="*" component={NotFound} />
+          </Switch>
         </Router>
       </div>
     );

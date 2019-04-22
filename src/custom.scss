@@ -1,1 +1,13 @@
-@import '~bootstrap/scss/bootstrap.scss';
+@import "~bootstrap/scss/bootstrap.scss";
+
+.video-screen {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+}
+
+.btn-call {
+  margin-left: 10px;
+  border-radius: 20px;
+}
