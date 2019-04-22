@@ -24,9 +24,9 @@ class NewCustomer extends Component {
 
           <div className="card-body d-flex flex-column">
             <p className="card-text">{str_time}</p>
-            <div className="row">
-              <h5 className="col-lg-9 card-title">{name}</h5>
-              <p className="col-lg-3 card-text">{score}</p>
+            <div>
+              <h5 className="align-left card-title">{name}</h5>
+              <p className="align-right card-text">{score}</p>
             </div>
 
             <div className="row">

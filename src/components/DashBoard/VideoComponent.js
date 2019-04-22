@@ -5,7 +5,7 @@ export default class VideoComponent extends Component {
     return (
       <div>
         <img
-          className="video-screen"
+          className="video-screen img-fluid"
           src="https://placehold.it/700x400"
           alt=""
         />
