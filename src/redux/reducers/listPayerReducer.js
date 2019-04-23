@@ -10,7 +10,7 @@ const initialState = {
 const listPayerReducer = (state = initialState, action) => {
   switch (action.type) {
     case Constant.START_GET_PAYER:
-      return { ...state, isLoading: true };
+      return { ...state, isLoading: true, payers: [] };
     case Constant.GET_SUCCESS:
       return {
         ...state,
@@ -21,8 +21,9 @@ const listPayerReducer = (state = initialState, action) => {
     case Constant.GET_FAILED:
       return { ...state, isLoading: false };
     case Constant.SELECT_PAYER:
-      let { payer } = state;
+      const { payer } = state;
       let selectPayer = {};
+
       if (payer.id) {
         if (payer.id === action.id) {
           selectPayer = {};
@@ -33,6 +34,7 @@ const listPayerReducer = (state = initialState, action) => {
       } else {
         selectPayer = state.payers.find(payer => payer.id === action.id);
       }
+
       return { ...state, payer: selectPayer };
     default:
       return state;
