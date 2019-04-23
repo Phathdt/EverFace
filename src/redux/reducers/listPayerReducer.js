@@ -11,14 +11,14 @@ const listPayerReducer = (state = initialState, action) => {
   switch (action.type) {
     case Constant.START_GET_PAYER:
       return { ...state, isLoading: true, payers: [] };
-    case Constant.GET_SUCCESS:
+    case Constant.GET_SUCCESS_PAYER:
       return {
         ...state,
         isLoaded: true,
         isLoading: false,
         payers: action.payers
       };
-    case Constant.GET_FAILED:
+    case Constant.GET_FAILED_PAYER:
       return { ...state, isLoading: false };
     case Constant.SELECT_PAYER:
       const { payer } = state;

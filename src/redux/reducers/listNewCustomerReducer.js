@@ -10,14 +10,14 @@ const listNewCustomerReducer = (state = initialState, action) => {
   switch (action.type) {
     case Constant.START_GET_CUSTOMER:
       return { ...state, isLoading: true };
-    case Constant.GET_SUCCESS:
+    case Constant.GET_SUCCESS_CUSTOMER:
       return {
         ...state,
         isLoaded: true,
         isLoading: false,
         customers: action.customers
       };
-    case Constant.GET_FAILED:
+    case Constant.GET_FAILED_CUSTOMER:
       return { ...state, isLoading: false };
     default:
       return state;

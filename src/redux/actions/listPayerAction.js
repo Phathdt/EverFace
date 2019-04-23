@@ -8,10 +8,10 @@ export const getListPayer = () => {
     service
       .getListPayer()
       .then(response => {
-        dispatch({ type: Constant.GET_SUCCESS, payers: response });
+        dispatch({ type: Constant.GET_SUCCESS_PAYER, payers: response });
       })
-      .catch(_error => {
-        dispatch({ type: Constant.GET_FAILED });
+      .catch(error => {
+        dispatch({ type: Constant.GET_FAILED_PAYER });
       });
   };
 };
