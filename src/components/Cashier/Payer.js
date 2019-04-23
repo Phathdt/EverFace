@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { selectPayer } from "../../redux/actions/listPayerAction";
 
 class Payer extends Component {
   constructor(props) {
@@ -15,7 +16,10 @@ class Payer extends Component {
   render() {
     const { image_base64, name, score, id } = this.state;
     return (
-      <div className="col-lg-2 col-sm-2 payer">
+      <div
+        className="col-lg-2 col-sm-2 payer"
+        onClick={() => this.props.selectPayer(id)}
+      >
         <div className="card h-100">
           <img className="card-img-top" src={image_base64} alt="" />
 
@@ -35,7 +39,11 @@ class Payer extends Component {
 
 const mapStateToProps = state => ({});
 
-const mapDispatchToProps = dispacth => {};
+const mapDispatchToProps = dispacth => {
+  return {
+    selectPayer: id => dispacth(selectPayer(id))
+  };
+};
 export default connect(
   mapStateToProps,
   mapDispatchToProps

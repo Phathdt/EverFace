@@ -3,7 +3,8 @@ import Constant from "../constants/listPayerConstant";
 const initialState = {
   isLoaded: false,
   isLoading: false,
-  payers: []
+  payers: [],
+  payer: {}
 };
 
 const listPayerReducer = (state = initialState, action) => {
@@ -19,6 +20,20 @@ const listPayerReducer = (state = initialState, action) => {
       };
     case Constant.GET_FAILED:
       return { ...state, isLoading: false };
+    case Constant.SELECT_PAYER:
+      let { payer } = state;
+      let selectPayer = {};
+      if (payer.id) {
+        if (payer.id === action.id) {
+          selectPayer = {};
+          return { ...state, payer: {} };
+        } else {
+          selectPayer = state.payers.find(payer => payer.id === action.id);
+        }
+      } else {
+        selectPayer = state.payers.find(payer => payer.id === action.id);
+      }
+      return { ...state, payer: selectPayer };
     default:
       return state;
   }

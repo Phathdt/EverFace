@@ -15,3 +15,9 @@ export const getListPayer = () => {
       });
   };
 };
+
+export const selectPayer = id => {
+  return (dispatch, getState) => {
+    dispatch({ type: Constant.SELECT_PAYER, id: id });
+  };
+};
