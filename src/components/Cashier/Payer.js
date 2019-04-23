@@ -24,9 +24,9 @@ class Payer extends Component {
           <img className="card-img-top" src={image_base64} alt="" />
 
           <div className="card-body d-flex flex-column">
-            <div>
-              <h5 className="align-left card-title">{name}</h5>
-              <p className="align-right card-text">{score}</p>
+            <div className="row">
+              <h5 className="card-title col-lg-9">{name}</h5>
+              <p className="card-text col-lg-3">{score}</p>
             </div>
 
             <div className="row" />
