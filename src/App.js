@@ -3,8 +3,8 @@ import { ToastContainer } from "react-toastify";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Sidebar from "react-sidebar";
-import MaterialTitlePanel from "./components/SideBar/material_title_panel";
-import SidebarContent from "./components/SideBar/sidebar_content";
+import MaterialTitlePanel from "./components/SideBar/MaterialTitlePanel";
+import SidebarContent from "./components/SideBar/SidebarContent";
 
 import DashBoardPage from "./pages/DashBoardPage";
 import CashierPage from "./pages/CashierPage";
