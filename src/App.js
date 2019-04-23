@@ -112,7 +112,7 @@ class App extends Component {
     return (
       <div className="App container h-100">
         <ToastContainer />
-        <Router basename="/">
+        <Router>
           <Sidebar
             {...sidebarProps}
             styles={{ sidebar: styles.sidebar, content: styles.content }}
