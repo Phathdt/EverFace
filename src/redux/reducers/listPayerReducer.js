@@ -24,15 +24,19 @@ const listPayerReducer = (state = initialState, action) => {
       const { payer } = state;
       let selectPayer = {};
 
-      if (payer.id) {
-        if (payer.id === action.id) {
+      if (payer.user_id) {
+        if (payer.user_id === action.user_id) {
           selectPayer = {};
           return { ...state, payer: {} };
         } else {
-          selectPayer = state.payers.find(payer => payer.id === action.id);
+          selectPayer = state.payers.find(
+            payer => payer.user_id === action.user_id
+          );
         }
       } else {
-        selectPayer = state.payers.find(payer => payer.id === action.id);
+        selectPayer = state.payers.find(
+          payer => payer.user_id === action.user_id
+        );
       }
 
       return { ...state, payer: selectPayer };

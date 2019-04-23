@@ -7,18 +7,18 @@ class Payer extends Component {
     super(props);
 
     this.state = {
-      id: props.payer.id,
+      user_id: props.payer.user_id,
       image_base64: props.payer.image_base64,
       name: props.payer.name,
       score: props.payer.score
     };
   }
   render() {
-    const { image_base64, name, score, id } = this.state;
+    const { image_base64, name, score, user_id } = this.state;
     return (
       <div
         className="col-lg-2 col-sm-2 payer"
-        onClick={() => this.props.selectPayer(id)}
+        onClick={() => this.props.selectPayer(user_id)}
       >
         <div className="card h-100">
           <img className="card-img-top" src={image_base64} alt="" />
