@@ -7,8 +7,14 @@ export default class CashierPage extends Component {
     return (
       <React.Fragment>
         <CashierTitle />
-        <ListPayer />
-        <PayerForm />
+        <div className="row">
+          <div className="col-lg-6 col-sm-12">
+            <ListPayer />
+          </div>
+          <div className="col-lg-6 col-sm-12">
+            <PayerForm />
+          </div>
+        </div>
       </React.Fragment>
     );
   }

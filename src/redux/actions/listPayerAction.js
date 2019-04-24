@@ -21,3 +21,9 @@ export const selectPayer = user_id => {
     dispatch({ type: Constant.SELECT_PAYER, user_id: user_id });
   };
 };
+
+export const updateFormData = (key, value) => {
+  return (dispatch, getState) => {
+    dispatch({ type: Constant.UPDATE_FORM_DATA, key: key, value: value });
+  };
+};

@@ -17,7 +17,7 @@ class Payer extends Component {
     const { image_base64, name, score, user_id } = this.state;
     return (
       <div
-        className="col-lg-2 col-sm-2 payer"
+        className="col-lg-4 col-sm-4 payer"
         onClick={() => this.props.selectPayer(user_id)}
       >
         <div className="card h-100">
@@ -28,8 +28,6 @@ class Payer extends Component {
               <h5 className="card-title col-lg-9">{name}</h5>
               <p className="card-text col-lg-3">{score}</p>
             </div>
-
-            <div className="row" />
           </div>
         </div>
       </div>

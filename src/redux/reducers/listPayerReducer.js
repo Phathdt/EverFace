@@ -4,7 +4,8 @@ const initialState = {
   isLoaded: false,
   isLoading: false,
   payers: [],
-  payer: {}
+  payer: {},
+  formData: {}
 };
 
 const listPayerReducer = (state = initialState, action) => {
@@ -27,7 +28,6 @@ const listPayerReducer = (state = initialState, action) => {
       if (payer.user_id) {
         if (payer.user_id === action.user_id) {
           selectPayer = {};
-          return { ...state, payer: {} };
         } else {
           selectPayer = state.payers.find(
             payer => payer.user_id === action.user_id
@@ -38,8 +38,13 @@ const listPayerReducer = (state = initialState, action) => {
           payer => payer.user_id === action.user_id
         );
       }
+      let formData = Object.assign({}, selectPayer);
 
-      return { ...state, payer: selectPayer };
+      return { ...state, payer: selectPayer, formData: formData };
+    case Constant.UPDATE_FORM_DATA:
+      let data = state.formData;
+      data[action.key] = action.value;
+      return { ...state, formData: data };
     default:
       return state;
   }
