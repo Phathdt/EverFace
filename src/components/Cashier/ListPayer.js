@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getListPayer } from "../../redux/actions/listPayerAction";
 import Payer from "./Payer";
+import _ from "lodash";
 class ListPayer extends Component {
   constructor(props) {
     super(props);
@@ -9,14 +10,18 @@ class ListPayer extends Component {
     this.props.getListPayer();
   }
   render() {
-    const { isLoaded, payers } = this.props;
+    const { isLoaded, payers, payer } = this.props;
 
     if (isLoaded) {
       return (
         <React.Fragment>
           <div className="row">
-            {payers.map((payer, index) => (
-              <Payer payer={payer} key={index} />
+            {payers.map((myPayer, index) => (
+              <Payer
+                payer={myPayer}
+                key={index}
+                active={_.isEqual(payer, myPayer)}
+              />
             ))}
           </div>
           <div className="row float-right button-margin-right">
@@ -39,7 +44,8 @@ const mapStateToProps = state => {
   return {
     isLoaded: state.listPayer.isLoaded,
     isLoading: state.listPayer.isLoading,
-    payers: state.listPayer.payers
+    payers: state.listPayer.payers,
+    payer: state.listPayer.payer
   };
 };
 const mapDispatchToProps = dispacth => {

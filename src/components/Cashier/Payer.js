@@ -10,14 +10,21 @@ class Payer extends Component {
       user_id: props.payer.user_id,
       image_base64: props.payer.image_base64,
       name: props.payer.name,
-      score: props.payer.score
+      score: props.payer.score,
+      active: props.active
     };
   }
   render() {
     const { image_base64, name, score, user_id } = this.state;
+    let { active } = this.props;
+    let className = "col-lg-4 col-sm-4 payer";
+
+    if (active) {
+      className += " active";
+    }
     return (
       <div
-        className="col-lg-4 col-sm-4 payer"
+        className={className}
         onClick={() => this.props.selectPayer(user_id)}
       >
         <div className="card h-100">
