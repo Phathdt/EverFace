@@ -17,7 +17,7 @@ class PayerForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    formData: state.listPayer.formData
+    payer: state.listPayer.payer
   };
 };
 

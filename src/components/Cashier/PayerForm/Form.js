@@ -6,7 +6,7 @@ import { resetForm, submitForm } from "../../../redux/actions/listPayerAction";
 class CForm extends Component {
   render() {
     let payer = this.props.payer || {};
-    const { image_base64 } = payer;
+    const { image_base64, user_id } = payer;
     return (
       <form
         onSubmit={e => {
@@ -78,7 +78,7 @@ class CForm extends Component {
                 Xóa
               </button>
               <button type="submit" className="btn btn-primary">
-                Đăng ký"
+                {user_id === "" ? "Đăng ký" : "Cập nhật"}
               </button>
             </div>
           </div>
