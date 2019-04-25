@@ -58,7 +58,7 @@ class CForm extends Component {
               </div>
             </div>
             <div className="form-group row">
-              <label className="col-sm-3 col-form-label">Tên</label>
+              <label className="col-sm-3 col-form-label">User ID</label>
               <div className="col-sm-9">
                 <Field
                   name="user_id"
