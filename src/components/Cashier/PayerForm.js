@@ -12,21 +12,10 @@ class PayerForm extends Component {
   };
   render() {
     let { formData } = this.props;
-    let form;
-
-    if (
-      Object.entries(formData).length === 0 &&
-      formData.constructor === Object
-    ) {
-      form = <div />;
-    } else {
-      form = <Form payer={formData} handleChange={this.handleChange} />;
-    }
-
     return (
       <React.Fragment>
         <PayerTitle />
-        {form}
+        <Form payer={formData} handleChange={this.handleChange} />
       </React.Fragment>
     );
   }

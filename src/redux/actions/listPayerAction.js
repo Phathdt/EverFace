@@ -16,9 +16,9 @@ export const getListPayer = () => {
   };
 };
 
-export const selectPayer = user_id => {
+export const selectPayer = id => {
   return (dispatch, getState) => {
-    dispatch({ type: Constant.SELECT_PAYER, user_id: user_id });
+    dispatch({ type: Constant.SELECT_PAYER, id: id });
   };
 };
 

@@ -7,7 +7,11 @@ export default class Form extends Component {
       <div className="row">
         <div className="col-lg-4 col-sm-4">
           <div className="card">
-            <img className="card-img-top" src={image_base64} alt="" />
+            <img
+              className="card-img-top"
+              src={image_base64 || "https://placehold.it/700x700"}
+              alt=""
+            />
           </div>
         </div>
         <div className="col-lg-8 col-sm-8">
