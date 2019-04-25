@@ -22,8 +22,33 @@ export const selectPayer = id => {
   };
 };
 
-export const updateFormData = (key, value) => {
+export const resetForm = () => {
   return (dispatch, getState) => {
-    dispatch({ type: Constant.UPDATE_FORM_DATA, key: key, value: value });
+    dispatch({ type: Constant.RESET_FORM });
+  };
+};
+
+export const submitForm = () => {
+  return (dispatch, getState) => {
+    let { values } = getState().form.formPayer;
+    if (values.user_id !== "") {
+      service
+        .updateUser(values)
+        .then(response => {
+          dispatch({ type: Constant.UPDATE_USER_SUCCESS });
+        })
+        .catch(error => {
+          dispatch({ type: Constant.UPDATE_USER_FAILED });
+        });
+    } else {
+      service
+        .createUser(values)
+        .then(response => {
+          dispatch({ type: Constant.CREATE_USER_SUCCESS });
+        })
+        .catch(error => {
+          dispatch({ type: Constant.CREATE_USER_FAILED });
+        });
+    }
   };
 };

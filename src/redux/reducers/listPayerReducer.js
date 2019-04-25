@@ -40,10 +40,11 @@ const listPayerReducer = (state = initialState, action) => {
       let formData = Object.assign({}, selectPayer);
 
       return { ...state, payer: selectPayer, formData: formData };
-    case Constant.UPDATE_FORM_DATA:
-      let data = state.formData;
-      data[action.key] = action.value;
-      return { ...state, formData: data };
+    case Constant.RESET_FORM:
+      return {
+        ...state,
+        payer: {}
+      };
     default:
       return state;
   }
