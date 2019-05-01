@@ -1,6 +1,6 @@
 import http from "./httpService";
 
-const apiUrl = "https://5cbc10cafa84180014bdb218.mockapi.io";
+const apiUrl = "http://localhost:5000";
 
 const getListPayer = async () => {
   return await http.get(`${apiUrl}/current_payers`);
@@ -9,7 +9,7 @@ const getListPayer = async () => {
 const updateUser = async data => {
   let { user_id, name, image_base64, group, title } = data;
 
-  return await http.put(`${apiUrl}/user/12`, {
+  return await http.put(`${apiUrl}/user`, {
     group: group || 0,
     title: title || 0,
     name: name,
