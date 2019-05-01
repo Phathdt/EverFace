@@ -12,6 +12,10 @@ import ListCustomerPage from "./pages/ListCustomerPage";
 import DetailCustomerPage from "./pages/DetailCustomerPage";
 import NotFound from "./pages/NotFound";
 
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap-css-only/css/bootstrap.min.css";
+import "mdbreact/dist/css/mdb.css";
+
 const mql = window.matchMedia(`(min-width: 800px)`);
 
 const styles = {
