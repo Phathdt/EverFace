@@ -1,5 +1,6 @@
 import Constant from "../constants/listPayerConstant";
 import service from "../../services/listPayerService";
+import { toast } from "react-toastify";
 
 export const getListPayer = () => {
   return (dispatch, getState) => {
@@ -36,6 +37,7 @@ export const submitForm = () => {
         .updateUser(values)
         .then(response => {
           dispatch({ type: Constant.UPDATE_USER_SUCCESS });
+          toast.success("Cập nhật thông tin thành công");
         })
         .catch(error => {
           dispatch({ type: Constant.UPDATE_USER_FAILED });
@@ -45,6 +47,7 @@ export const submitForm = () => {
         .createUser(values)
         .then(response => {
           dispatch({ type: Constant.CREATE_USER_SUCCESS });
+          toast.success("Tạo thông tin thành công");
         })
         .catch(error => {
           dispatch({ type: Constant.CREATE_USER_FAILED });
