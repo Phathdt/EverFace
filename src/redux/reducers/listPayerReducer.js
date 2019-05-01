@@ -45,6 +45,7 @@ const listPayerReducer = (state = initialState, action) => {
         ...state,
         payer: {}
       };
+    case Constant.CREATE_USER_SUCCESS:
     case Constant.UPDATE_USER_SUCCESS:
       return {
         ...state,
