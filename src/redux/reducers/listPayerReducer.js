@@ -43,7 +43,13 @@ const listPayerReducer = (state = initialState, action) => {
           if (currentPayer.user_id === "") {
             selectPayerIds = [selectPayer.id];
           } else {
-            selectPayerIds.push(selectPayer.id);
+            if (_.includes(selectPayerIds, selectPayer.id)) {
+              selectPayerIds = selectPayerIds.filter(
+                id => id !== selectPayer.id
+              );
+            } else {
+              selectPayerIds.push(selectPayer.id);
+            }
           }
         }
       }
