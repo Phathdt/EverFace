@@ -39,8 +39,14 @@
   margin-right: 20px;
 }
 
+.btn-reload-payer {
+  position: absolute;
+  right: 10px;
+}
+
 .list-payer {
   height: 800px;
+  margin-top: 50px;
   overflow: scroll;
 }
 
