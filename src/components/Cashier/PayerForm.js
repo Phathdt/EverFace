@@ -6,14 +6,16 @@ import Form from "./PayerForm/Form";
 import PayerTitle from "./PayerForm/PayerTitle";
 class PayerForm extends Component {
   render() {
-    let { payer } = this.props;
-    if (_.isEmpty(payer)) {
+    let { selectPayerIds } = this.props;
+    if (_.isEmpty(selectPayerIds)) {
       return null;
     } else {
+      let { payers } = this.props;
+      let payer = payers.find(payer => payer.id === selectPayerIds[0]);
       return (
         <React.Fragment>
           <PayerTitle />
-          <Form payer={payer} />
+          <Form payer={payer} initialValues={payer} />
         </React.Fragment>
       );
     }
@@ -22,7 +24,8 @@ class PayerForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    payer: state.listPayer.payer
+    selectPayerIds: state.listPayer.selectPayerIds,
+    payers: state.listPayer.payers
   };
 };
 

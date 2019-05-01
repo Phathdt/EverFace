@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import _ from "lodash";
 import { Field, reduxForm, formValueSelector } from "redux-form";
 import { resetForm, submitForm } from "../../../redux/actions/listPayerAction";
 
@@ -62,7 +63,7 @@ class CForm extends Component {
               <div className="col-sm-9">
                 <Field
                   name="user_id"
-                  readOnly
+                  readOnly={!_.isEmpty(user_id)}
                   component="input"
                   type="text"
                   className="form-control"
@@ -107,8 +108,14 @@ const formPayerValues = state => {
   };
 };
 
+const getInitialValues = state => {
+  let { selectPayerIds, payers } = state.listPayer;
+
+  return payers.find(payer => payer.id === selectPayerIds[0]);
+};
+
 const mapStateToProps = state => ({
-  initialValues: state.listPayer.payer,
+  initialValues: getInitialValues(state),
   formPayerValues: formPayerValues(state)
 });
 

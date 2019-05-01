@@ -1,6 +1,7 @@
 import Constant from "../constants/listPayerConstant";
 import service from "../../services/listPayerService";
 import { toast } from "react-toastify";
+import _ from "lodash";
 
 export const getListPayer = () => {
   return (dispatch, getState) => {
@@ -31,10 +32,15 @@ export const resetForm = () => {
 
 export const submitForm = () => {
   return (dispatch, getState) => {
-    let { values } = getState().form.formPayer;
-    if (values.user_id !== "") {
+    let { id, image_base64, ...formData } = getState().form.formPayer.values;
+    if (formData.user_id !== "") {
+      let { selectPayerIds, payers } = getState().listPayer;
+      formData.image_base64 = payers
+        .filter(payer => _.includes(selectPayerIds, payer.id))
+        .map(payer => payer.image_base64);
+
       service
-        .updateUser(values)
+        .updateUser(formData)
         .then(response => {
           dispatch({ type: Constant.UPDATE_USER_SUCCESS });
           toast.success("Cập nhật thông tin thành công");
@@ -44,8 +50,10 @@ export const submitForm = () => {
           dispatch({ type: Constant.UPDATE_USER_FAILED });
         });
     } else {
+      formData.image_base64 = [image_base64];
+
       service
-        .createUser(values)
+        .createUser(formData)
         .then(response => {
           dispatch({ type: Constant.CREATE_USER_SUCCESS });
           toast.success("Tạo thông tin thành công");

@@ -1,11 +1,11 @@
 import Constant from "../constants/listPayerConstant";
+import _ from "lodash";
 
 const initialState = {
   isLoaded: false,
   isLoading: false,
   payers: [],
-  payer: {},
-  formData: {}
+  selectPayerIds: []
 };
 
 const listPayerReducer = (state = initialState, action) => {
@@ -25,31 +25,40 @@ const listPayerReducer = (state = initialState, action) => {
     case Constant.GET_FAILED_PAYER:
       return { ...state, isLoading: false };
     case Constant.SELECT_PAYER:
-      const { payer } = state;
-      let selectPayer = {};
-
-      if (payer.id !== undefined) {
-        if (payer.id === action.id) {
-          selectPayer = {};
-        } else {
-          selectPayer = state.payers.find(payer => payer.id === action.id);
-        }
+      let { selectPayerIds } = state;
+      let selectPayer = state.payers.find(payer => payer.id === action.id);
+      if (_.isEmpty(selectPayerIds)) {
+        selectPayerIds.push(selectPayer.id);
       } else {
-        selectPayer = state.payers.find(payer => payer.id === action.id);
+        if (selectPayer.user_id !== "") {
+          if (selectPayer.id === selectPayerIds[0]) {
+            selectPayerIds = [];
+          } else {
+            selectPayerIds = [selectPayer.id];
+          }
+        } else {
+          let currentPayer = state.payers.find(
+            payer => payer.id === selectPayerIds[0]
+          );
+          if (currentPayer.user_id === "") {
+            selectPayerIds = [selectPayer.id];
+          } else {
+            selectPayerIds.push(selectPayer.id);
+          }
+        }
       }
-      let formData = Object.assign({}, selectPayer);
 
-      return { ...state, payer: selectPayer, formData: formData };
+      return { ...state, selectPayerIds: [...selectPayerIds] };
     case Constant.RESET_FORM:
       return {
         ...state,
-        payer: {}
+        selectPayerIds: []
       };
     case Constant.CREATE_USER_SUCCESS:
     case Constant.UPDATE_USER_SUCCESS:
       return {
         ...state,
-        payer: {}
+        selectPayerIds: []
       };
     default:
       return state;
