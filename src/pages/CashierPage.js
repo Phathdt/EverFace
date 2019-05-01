@@ -6,7 +6,7 @@ import ButtonReloadPayer from "../components/Cashier/ButtonReloadPayer";
 export default class CashierPage extends Component {
   render() {
     return (
-      <React.Fragment>
+      <div className="container-fluid">
         <CashierTitle />
         <div className="row">
           <div className="col-lg-6 col-sm-12 ">
@@ -19,7 +19,7 @@ export default class CashierPage extends Component {
             <PayerForm />
           </div>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

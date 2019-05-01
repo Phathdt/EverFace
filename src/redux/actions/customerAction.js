@@ -4,10 +4,14 @@ import service from "../../services/customerService";
 export const getListCustomer = () => {
   return (dispatch, getState) => {
     dispatch({ type: Constant.START_GET_CUSTOMER });
-    let { page, search, per_page } = getState().customer;
+    let { page, per_page } = getState().customer;
+    let search = "";
+    try {
+      search = getState().form.formSearch.values.search;
+    } catch (error) {}
 
     service
-      .getListCustomer(page, search, per_page)
+      .getlistCustomer(search, page, per_page)
       .then(response => {
         dispatch({ type: Constant.GET_SUCCESS_CUSTOMER, customers: response });
       })
