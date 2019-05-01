@@ -19,7 +19,7 @@ class Payer extends Component {
     const { image_base64, name, score, id } = this.state;
 
     let { active } = this.props;
-    let className = "col-lg-4 col-sm-4 payer";
+    let className = "col-lg-3 col-sm-3 payer";
 
     if (active) {
       className += " active";
@@ -31,8 +31,8 @@ class Payer extends Component {
 
           <div className="card-body d-flex flex-column">
             <div className="row">
-              <h5 className="card-title col-lg-9">{name}</h5>
-              <p className="card-text col-lg-3">{score}</p>
+              <h5 className="payer-title col-lg-9">{name}</h5>
+              <p className="payer-score col-lg-3">{score}</p>
             </div>
           </div>
         </div>
