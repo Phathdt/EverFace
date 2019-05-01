@@ -4,17 +4,17 @@ import Payer from "./Payer";
 import _ from "lodash";
 class ListPayer extends Component {
   render() {
-    const { isLoaded, payers, payer } = this.props;
+    const { isLoaded, payers, selectPayerIds } = this.props;
 
     if (isLoaded) {
       return (
         <React.Fragment>
           <div className="row list-payer">
-            {payers.map((myPayer, index) => (
+            {payers.map((payer, index) => (
               <Payer
-                payer={myPayer}
+                payer={payer}
                 key={index}
-                active={_.isEqual(payer, myPayer)}
+                active={_.includes(selectPayerIds, payer.id)}
               />
             ))}
           </div>
@@ -30,7 +30,7 @@ const mapStateToProps = state => {
     isLoaded: state.listPayer.isLoaded,
     isLoading: state.listPayer.isLoading,
     payers: state.listPayer.payers,
-    payer: state.listPayer.payer
+    selectPayerIds: state.listPayer.selectPayerIds
   };
 };
 const mapDispatchToProps = dispacth => {
