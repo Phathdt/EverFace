@@ -31,8 +31,8 @@ class Payer extends Component {
 
           <div className="card-body d-flex flex-column">
             <div className="row">
-              <h5 className="payer-title col-lg-9">{name}</h5>
-              <p className="payer-score col-lg-3">{score}</p>
+              <h5 className="payer-title col-9">{name}</h5>
+              <p className="payer-score col-3">{score}</p>
             </div>
           </div>
         </div>
