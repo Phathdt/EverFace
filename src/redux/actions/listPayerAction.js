@@ -38,6 +38,7 @@ export const submitForm = () => {
         .then(response => {
           dispatch({ type: Constant.UPDATE_USER_SUCCESS });
           toast.success("Cập nhật thông tin thành công");
+          dispatch(getListPayer());
         })
         .catch(error => {
           dispatch({ type: Constant.UPDATE_USER_FAILED });
@@ -48,6 +49,7 @@ export const submitForm = () => {
         .then(response => {
           dispatch({ type: Constant.CREATE_USER_SUCCESS });
           toast.success("Tạo thông tin thành công");
+          dispatch(getListPayer());
         })
         .catch(error => {
           dispatch({ type: Constant.CREATE_USER_FAILED });
