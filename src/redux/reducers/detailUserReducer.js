@@ -35,6 +35,8 @@ const detailUserReducer = (state = initialState, action) => {
       };
     case Constant.GET_FAILED_DETAIL_CUSTOMER:
       return { ...state, isLoading: false };
+    case Constant.DELETE_SUCCESS_DETAIL_CUSTOMER_PAGE:
+      return { ...state, user: {}, checkin_list: [] };
     case Constant.CHANGE_PAGE_DETAIL_USER_PAGE:
       let { page } = action;
 

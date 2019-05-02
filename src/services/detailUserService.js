@@ -8,6 +8,11 @@ const getDetailUser = async (user_id, page = 0, per_page = 10) => {
   );
 };
 
+const deleteCustomer = async user_id => {
+  return await http.delete(`${apiUrl}/user`, { user_id: user_id });
+};
+
 export default {
-  getDetailUser
+  getDetailUser,
+  deleteCustomer
 };

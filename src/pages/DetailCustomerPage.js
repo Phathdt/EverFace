@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import Title from "../components/detailUser/Title";
-import { connect } from "react-redux";
+import Form from "../components/detailUser/formDetailUser";
+
 import { getDetailUser } from "../redux/actions/detailUserAction";
 class DetailCustomerPage extends Component {
   componentDidMount() {
@@ -9,9 +11,11 @@ class DetailCustomerPage extends Component {
   }
 
   render() {
+    let { current_page, total_page, per_page } = this.props;
     return (
       <div className="container">
         <Title />
+        <Form />
       </div>
     );
   }
@@ -19,12 +23,9 @@ class DetailCustomerPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    isLoaded: state.detailUser.isLoaded,
-    isLoading: state.detailUser.isLoading,
-    user: state.detailUser.user,
-    checkin_list: state.detailUser.checkin_list,
     current_page: state.customer.current_page,
-    total_page: state.detailUser.total_page
+    total_page: state.detailUser.total_page,
+    per_page: state.detailUser.per_page
   };
 };
 const mapDispatchToProps = dispacth => {
