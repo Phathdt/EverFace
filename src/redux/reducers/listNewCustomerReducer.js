@@ -11,11 +11,13 @@ const listNewCustomerReducer = (state = initialState, action) => {
     case Constant.START_GET_CUSTOMER:
       return { ...state, isLoading: true };
     case Constant.GET_SUCCESS_CUSTOMER:
+      let { customers } = action;
+
       return {
         ...state,
         isLoaded: true,
         isLoading: false,
-        customers: action.customers
+        customers: customers
       };
     case Constant.GET_FAILED_CUSTOMER:
       return { ...state, isLoading: false };
