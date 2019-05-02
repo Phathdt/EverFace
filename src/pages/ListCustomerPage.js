@@ -9,7 +9,7 @@ import { confirmAlert } from "react-confirm-alert";
 
 import SearchSection from "../components/Customer/SearchSection";
 import CustomerTable from "../components/Customer/CustomerTable";
-import Pagination from "../components/Customer/Pagination";
+import Pagination from "../components/Shared/pagination";
 class ListCustomerPage extends Component {
   componentDidMount() {
     this.props.getListCustomer();
