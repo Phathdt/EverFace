@@ -49,7 +49,7 @@ const Table = ({ customers, isLoaded, deleteCustomer }) => {
                     onClick={() => deleteCustomer(customer.user_id)}
                   >
                     <MDBIcon
-                      icon="ban mdb-gallery-view-icon"
+                      icon="trash-alt mdb-gallery-view-icon"
                       className="icon-big"
                     />
                     <p className="icon-title">Xoá</p>
