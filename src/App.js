@@ -127,7 +127,7 @@ class App extends Component {
                 <Route path="/cashier" component={CashierPage} />
                 <Route path="/customers" component={ListCustomerPage} />
                 <Route
-                  path="/detail_customers"
+                  path="/detail_customers/:id"
                   component={DetailCustomerPage}
                 />
                 <Route path="*" component={NotFound} />

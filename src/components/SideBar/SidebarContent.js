@@ -43,9 +43,6 @@ const SidebarContent = props => {
         <Link to="/customers" style={styles.sidebarLink}>
           Quản lý Khách hàng
         </Link>
-        <Link to="/detail_customers" style={styles.sidebarLink}>
-          Chi tiết Khách hàng
-        </Link>
       </div>
     </MaterialTitlePanel>
   );
