@@ -1,6 +1,7 @@
 import React from "react";
 import { MDBTable, MDBTableBody, MDBTableHead, MDBIcon } from "mdbreact";
 import dateFormat from "dateformat";
+import { Link } from "react-router-dom";
 
 const Table = ({ customers, isLoaded, deleteCustomer }) => {
   if (isLoaded) {
@@ -38,11 +39,13 @@ const Table = ({ customers, isLoaded, deleteCustomer }) => {
               <td>
                 <div className="row">
                   <div className="col-lg-6">
-                    <MDBIcon
-                      icon="cog mdb-gallery-view-icon"
-                      className="icon-big"
-                    />
-                    <p className="icon-title">Chỉnh sửa</p>
+                    <Link to={`/detail_customers/${customer.user_id}`}>
+                      <MDBIcon
+                        icon="cog mdb-gallery-view-icon"
+                        className="icon-big"
+                      />
+                      <p className="icon-title">Chỉnh sửa</p>
+                    </Link>
                   </div>
                   <div
                     className="col-lg-6"
