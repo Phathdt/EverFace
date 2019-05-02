@@ -2,7 +2,7 @@ import React from "react";
 import { MDBTable, MDBTableBody, MDBTableHead, MDBIcon } from "mdbreact";
 import dateFormat from "dateformat";
 
-const Table = ({ customers, isLoaded }) => {
+const Table = ({ customers, isLoaded, deleteCustomer }) => {
   if (isLoaded) {
     return (
       <MDBTable responsive striped bordered hover className="customer-table">
@@ -44,7 +44,10 @@ const Table = ({ customers, isLoaded }) => {
                     />
                     <p className="icon-title">Chỉnh sửa</p>
                   </div>
-                  <div className="col-lg-6">
+                  <div
+                    className="col-lg-6"
+                    onClick={() => deleteCustomer(customer.user_id)}
+                  >
                     <MDBIcon
                       icon="ban mdb-gallery-view-icon"
                       className="icon-big"

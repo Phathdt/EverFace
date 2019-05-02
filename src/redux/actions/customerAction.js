@@ -1,5 +1,6 @@
 import Constant from "../constants/customerConstant";
 import service from "../../services/customerService";
+import { toast } from "react-toastify";
 
 export const getListCustomer = () => {
   return (dispatch, getState) => {
@@ -20,6 +21,23 @@ export const getListCustomer = () => {
       })
       .catch(_error => {
         dispatch({ type: Constant.GET_FAILED_CUSTOMER_PAGE });
+      });
+  };
+};
+
+export const deleteCustomer = user_id => {
+  return (dispatch, getState) => {
+    service
+      .deleteCustomer(user_id)
+      .then(response => {
+        dispatch({ type: Constant.DELETE_SUCCESS_CUSTOMER_PAGE });
+
+        toast.success("Xoá khách hàng thành công");
+
+        dispatch(getListCustomer());
+      })
+      .catch(_error => {
+        dispatch({ type: Constant.DELETE_FAILED_CUSTOMER_PAGE });
       });
   };
 };
