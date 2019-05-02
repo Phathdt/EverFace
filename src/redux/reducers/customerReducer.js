@@ -4,7 +4,7 @@ const initialState = {
   isLoaded: false,
   isLoading: false,
   customers: [],
-  page: 0,
+  current_page: 0,
   total_page: 0,
   search: "",
   per_page: 0
@@ -22,12 +22,16 @@ const customerReducer = (state = initialState, action) => {
         isLoaded: true,
         isLoading: false,
         customers: customers,
-        page: paginate.current_page,
+        current_page: paginate.current_page,
         total_page: paginate.total_items / paginate.per_page,
         per_page: paginate.per_page
       };
     case Constant.GET_FAILED_CUSTOMER_PAGE:
       return { ...state, isLoading: false };
+    case Constant.CHANGE_PAGE_CUSTOMER_PAGE:
+      let { page } = action;
+
+      return { ...state, current_page: page };
     default:
       return state;
   }

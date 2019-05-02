@@ -3,7 +3,8 @@ import Title from "../components/Customer/Title";
 import { connect } from "react-redux";
 import {
   getListCustomer,
-  deleteCustomer
+  deleteCustomer,
+  changePage
 } from "../redux/actions/customerAction";
 import { confirmAlert } from "react-confirm-alert";
 
@@ -32,7 +33,7 @@ class ListCustomerPage extends Component {
   };
 
   render() {
-    let { customers, isLoaded } = this.props;
+    let { customers, isLoaded, current_page, total_page } = this.props;
     return (
       <div className="container">
         <Title />
@@ -42,7 +43,12 @@ class ListCustomerPage extends Component {
           isLoaded={isLoaded}
           deleteCustomer={this.deleteCustomer}
         />
-        <Pagination />
+        <Pagination
+          isLoaded={isLoaded}
+          current_page={current_page}
+          total_page={total_page}
+          changePage={this.props.changePage}
+        />
       </div>
     );
   }
@@ -52,13 +58,16 @@ const mapStateToProps = state => {
   return {
     isLoaded: state.customer.isLoaded,
     isLoading: state.customer.isLoading,
-    customers: state.customer.customers
+    customers: state.customer.customers,
+    current_page: state.customer.current_page,
+    total_page: state.customer.total_page
   };
 };
 const mapDispatchToProps = dispacth => {
   return {
     getListCustomer: () => dispacth(getListCustomer()),
-    deleteCustomer: user_id => dispacth(deleteCustomer(user_id))
+    deleteCustomer: user_id => dispacth(deleteCustomer(user_id)),
+    changePage: page => dispacth(changePage(page))
   };
 };
 

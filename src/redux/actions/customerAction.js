@@ -5,14 +5,14 @@ import { toast } from "react-toastify";
 export const getListCustomer = () => {
   return (dispatch, getState) => {
     dispatch({ type: Constant.START_GET_CUSTOMER_PAGE });
-    let { page, per_page } = getState().customer;
+    let { current_page, per_page } = getState().customer;
     let search = "";
     try {
       search = getState().form.formSearch.values.search;
     } catch (error) {}
 
     service
-      .getlistCustomer(search, page, per_page)
+      .getlistCustomer(search, current_page, per_page)
       .then(response => {
         dispatch({
           type: Constant.GET_SUCCESS_CUSTOMER_PAGE,
@@ -40,5 +40,12 @@ export const deleteCustomer = user_id => {
       .catch(_error => {
         dispatch({ type: Constant.DELETE_FAILED_CUSTOMER_PAGE });
       });
+  };
+};
+
+export const changePage = page => {
+  return (dispatch, getState) => {
+    dispatch({ type: Constant.CHANGE_PAGE_CUSTOMER_PAGE, page: page });
+    dispatch(getListCustomer());
   };
 };
