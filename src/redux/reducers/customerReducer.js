@@ -11,9 +11,9 @@ const initialState = {
 
 const customerReducer = (state = initialState, action) => {
   switch (action.type) {
-    case Constant.START_GET_CUSTOMER:
+    case Constant.START_GET_CUSTOMER_PAGE:
       return { ...state, isLoading: true, isLoaded: false, customers: [] };
-    case Constant.GET_SUCCESS_CUSTOMER:
+    case Constant.GET_SUCCESS_CUSTOMER_PAGE:
       let { customers } = action;
 
       return {
@@ -22,7 +22,7 @@ const customerReducer = (state = initialState, action) => {
         isLoading: false,
         customers: customers
       };
-    case Constant.GET_FAILED_CUSTOMER:
+    case Constant.GET_FAILED_CUSTOMER_PAGE:
       return { ...state, isLoading: false };
     default:
       return state;

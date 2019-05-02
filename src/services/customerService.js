@@ -1,6 +1,6 @@
 import http from "./httpService";
 
-const apiUrl = "https://5cbc10cafa84180014bdb218.mockapi.io";
+const apiUrl = "http://localhost:5000";
 
 const getlistCustomer = async (q = "", page = 0, per_page = 10) => {
   return await http.get(

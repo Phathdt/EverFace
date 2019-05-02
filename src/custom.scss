@@ -71,3 +71,23 @@
     margin-top: -3px;
   }
 }
+
+.customer-table {
+  th,
+  td {
+    text-align: center;
+    vertical-align: middle !important;
+  }
+
+  .icon-big {
+    font-size: 50px;
+  }
+
+  .star-vip {
+    color: yellow;
+  }
+
+  .icon-title {
+    padding-top: 10px;
+  }
+}

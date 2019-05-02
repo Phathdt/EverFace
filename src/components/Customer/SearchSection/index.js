@@ -12,7 +12,7 @@ class CForm extends Component {
   render() {
     return (
       <div className="row form-group col-lg-6">
-        <div className="col-lg-4">Tim kiem</div>
+        <div className="col-lg-4">Tìm kiếm</div>
         <div className="col-lg-7">
           <Field
             component="input"
