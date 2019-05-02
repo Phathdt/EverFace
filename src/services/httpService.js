@@ -1,10 +1,11 @@
 import axios from "axios";
 import logger from "./logService";
 import { toast } from "react-toastify";
+import _ from "lodash";
 
 axios.interceptors.response.use(
   response => {
-    const { error, result } = response.data;
+    const { error, result, paginate } = response.data;
 
     if (error.code !== 0) {
       toast.error(error.message);
@@ -12,7 +13,11 @@ axios.interceptors.response.use(
 
       return Promise.reject({ messages: error.message });
     } else {
-      return result;
+      if (_.isEmpty(paginate)) {
+        return result;
+      } else {
+        return { result, paginate };
+      }
     }
   },
   error => {

@@ -16,7 +16,8 @@ export const getListCustomer = () => {
       .then(response => {
         dispatch({
           type: Constant.GET_SUCCESS_CUSTOMER_PAGE,
-          customers: response
+          customers: response.result,
+          paginate: response.paginate
         });
       })
       .catch(_error => {
