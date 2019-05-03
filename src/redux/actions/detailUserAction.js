@@ -31,6 +31,8 @@ export const deleteCustomer = user_id => {
     service.deleteCustomer(user_id).then(response => {
       dispatch({ type: Constant.DELETE_SUCCESS_DETAIL_CUSTOMER_PAGE });
 
+      toast.success("Xoá khách hàng thành công");
+
       history.push("/customers");
     });
   };
