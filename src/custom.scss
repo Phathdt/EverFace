@@ -93,3 +93,23 @@
 
   overflow: hidden;
 }
+
+.detail-customer-table {
+  th,
+  td {
+    text-align: center;
+    vertical-align: middle !important;
+  }
+
+  overflow: hidden;
+
+  margin-top: 100px;
+
+  .mini-image {
+    height: 100px;
+  }
+
+  .icon-big {
+    font-size: 50px;
+  }
+}
