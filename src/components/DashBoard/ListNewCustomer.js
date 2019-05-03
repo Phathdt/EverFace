@@ -18,6 +18,10 @@ class ListNewCustomer extends Component {
     );
   }
 
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   render() {
     const { isLoaded, customers } = this.props;
 
