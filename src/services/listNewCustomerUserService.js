@@ -1,6 +1,7 @@
 import http from "./httpService";
 
-const apiUrl = "http://localhost:5000";
+const apiUrl = "https://everface-api.herokuapp.com";
+// const apiUrl = "http://localhost:5000";
 
 const getListNewCustomer = async () => {
   return await http.get(`${apiUrl}/current_customers`);
