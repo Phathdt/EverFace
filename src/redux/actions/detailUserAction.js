@@ -87,34 +87,23 @@ export const changePage = page => {
 
 export const submitForm = () => {
   return (dispatch, getState) => {
-    // let { id, image_base64, ...formData } = getState().form.formPayer.values;
-    // if (formData.user_id !== "") {
-    //   let { selectPayerIds, payers } = getState().listPayer;
-    //   formData.image_base64 = payers
-    //     .filter(payer => _.includes(selectPayerIds, payer.id))
-    //     .map(payer => payer.image_base64);
-    //   service
-    //     .updateUser(formData)
-    //     .then(response => {
-    //       dispatch({ type: Constant.UPDATE_USER_SUCCESS });
-    //       toast.success("Cập nhật thông tin thành công");
-    //       dispatch(getListPayer());
-    //     })
-    //     .catch(error => {
-    //       dispatch({ type: Constant.UPDATE_USER_FAILED });
-    //     });
-    // } else {
-    //   formData.image_base64 = [image_base64];
-    //   service
-    //     .createUser(formData)
-    //     .then(response => {
-    //       dispatch({ type: Constant.CREATE_USER_SUCCESS });
-    //       toast.success("Tạo thông tin thành công");
-    //       dispatch(getListPayer());
-    //     })
-    //     .catch(error => {
-    //       dispatch({ type: Constant.CREATE_USER_FAILED });
-    //     });
-    // }
+    let { ...formData } = getState().form.formDetailUser.values;
+
+    formData.image_base64 = [formData.avatar];
+
+    service
+      .updateUser(formData)
+      .then(response => {
+        dispatch({ type: Constant.UPDATE_DETAIL_USER_SUCCESS });
+
+        toast.success("Cập nhật thông tin thành công");
+
+        let { user_id } = getState().detailUser.user;
+
+        dispatch(getDetailUser(user_id));
+      })
+      .catch(error => {
+        dispatch({ type: Constant.UPDATE_DETAIL_USER_FAILED });
+      });
   };
 };

@@ -27,9 +27,22 @@ const deleteAvatar = async (user_id, image_url) => {
   });
 };
 
+const updateUser = async data => {
+  let { user_id, name, image_base64, group, title } = data;
+
+  return await http.put(`${apiUrl}/user`, {
+    group: group || 0,
+    title: title || 0,
+    name: name,
+    user_id: user_id,
+    image_base64: image_base64
+  });
+};
+
 export default {
   getDetailUser,
   deleteCustomer,
   changeAvatar,
-  deleteAvatar
+  deleteAvatar,
+  updateUser
 };
