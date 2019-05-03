@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { ToastContainer } from "react-toastify";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
+import history from "./history";
 
 import Sidebar from "react-sidebar";
 import MaterialTitlePanel from "./components/SideBar/MaterialTitlePanel";
@@ -116,7 +117,7 @@ class App extends Component {
     return (
       <div className="App container h-100">
         <ToastContainer />
-        <Router>
+        <Router history={history}>
           <Sidebar
             {...sidebarProps}
             styles={{ sidebar: styles.sidebar, content: styles.content }}

@@ -1,5 +1,6 @@
 import Constant from "../constants/detailUserConstant";
 import service from "../../services/detailUserService";
+import history from "../../history";
 
 export const getDetailUser = user_id => {
   return (dispatch, getState) => {
@@ -27,6 +28,8 @@ export const deleteCustomer = user_id => {
   return (dispatch, getState) => {
     service.deleteCustomer(user_id).then(response => {
       dispatch({ type: Constant.DELETE_SUCCESS_DETAIL_CUSTOMER_PAGE });
+
+      history.push("/customers");
     });
   };
 };
