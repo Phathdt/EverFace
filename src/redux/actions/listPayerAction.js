@@ -33,7 +33,14 @@ export const resetForm = () => {
 export const submitForm = () => {
   return (dispatch, getState) => {
     let { id, image_base64, ...formData } = getState().form.formPayer.values;
-    if (formData.user_id !== "") {
+
+    let { selectPayerIds } = getState().listPayer;
+
+    let firstPayer = getState().listPayer.payers.find(
+      payer => payer.id === selectPayerIds[0]
+    );
+
+    if (firstPayer.user_id !== "") {
       let { selectPayerIds, payers } = getState().listPayer;
       formData.image_base64 = payers
         .filter(payer => _.includes(selectPayerIds, payer.id))
