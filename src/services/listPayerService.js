@@ -1,7 +1,7 @@
 import http from "./httpService";
+import Config from "../constants";
 
-const apiUrl = "https://everface-api.herokuapp.com";
-// const apiUrl = "http://localhost:5000";
+const apiUrl = Config.apiUrl;
 
 const getListPayer = async () => {
   return await http.get(`${apiUrl}/current_payers`);
