@@ -14,7 +14,13 @@ const listPayerReducer = (state = initialState, action) => {
       return { ...state, isLoading: true, payers: [] };
     case Constant.GET_SUCCESS_PAYER:
       let { payers } = action;
-      payers.forEach((payer, index) => (payer.id = index));
+      payers.forEach((payer, index) => {
+        payer.id = index;
+
+        if (payer.score !== "") {
+          payer.score = Math.round(parseFloat(payer.score) * 100) / 100;
+        }
+      });
 
       return {
         ...state,
@@ -26,29 +32,34 @@ const listPayerReducer = (state = initialState, action) => {
       return { ...state, isLoading: false };
     case Constant.SELECT_PAYER:
       let { selectPayerIds } = state;
+
       let selectPayer = state.payers.find(payer => payer.id === action.id);
+
       if (_.isEmpty(selectPayerIds)) {
         selectPayerIds.push(selectPayer.id);
       } else {
-        if (selectPayer.user_id !== "") {
-          if (selectPayer.id === selectPayerIds[0]) {
-            selectPayerIds = [];
+        // TH blank user
+        if (selectPayer.user_id === "") {
+          if (_.includes(selectPayerIds, selectPayer.id)) {
+            selectPayerIds = selectPayerIds.filter(id => id !== selectPayer.id);
           } else {
-            selectPayerIds = [selectPayer.id];
+            selectPayerIds = [...selectPayerIds, selectPayer.id];
           }
-        } else {
-          let currentPayer = state.payers.find(
-            payer => payer.id === selectPayerIds[0]
-          );
-          if (currentPayer.user_id === "") {
-            selectPayerIds = [selectPayer.id];
+        } // TH exist user
+        else {
+          if (_.includes(selectPayerIds, selectPayer.id)) {
+            selectPayerIds.shift(0);
           } else {
-            if (_.includes(selectPayerIds, selectPayer.id)) {
-              selectPayerIds = selectPayerIds.filter(
-                id => id !== selectPayer.id
-              );
+            let firstselectPayerId = selectPayerIds[0];
+
+            let firstPayer = state.payers.find(
+              payer => payer.id === firstselectPayerId
+            );
+
+            if (firstPayer.user_id === "") {
+              selectPayerIds.unshift(selectPayer.id);
             } else {
-              selectPayerIds.push(selectPayer.id);
+              selectPayerIds[0] = selectPayer.id;
             }
           }
         }
