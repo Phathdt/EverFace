@@ -59,7 +59,19 @@ const listPayerReducer = (state = initialState, action) => {
             if (firstPayer.user_id === "") {
               selectPayerIds.unshift(selectPayer.id);
             } else {
-              selectPayerIds[0] = selectPayer.id;
+              if (firstPayer.user_id === selectPayer.user_id) {
+                selectPayerIds = [...selectPayerIds, selectPayer.id];
+              } else {
+                let listPayerIds = state.payers
+                  .filter(payer => payer.user_id === firstPayer.user_id)
+                  .map(payer => payer.id);
+
+                selectPayerIds = selectPayerIds.filter(
+                  payerId => !_.includes(listPayerIds, payerId)
+                );
+
+                selectPayerIds = [selectPayer.id, ...selectPayerIds];
+              }
             }
           }
         }
