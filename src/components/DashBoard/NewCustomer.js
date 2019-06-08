@@ -7,7 +7,7 @@ class NewCustomer extends Component {
     super(props);
 
     this.state = {
-      id: props.customer.id,
+      user_id: props.customer.user_id,
       image_url: props.customer.image_url,
       name: props.customer.name,
       score: props.customer.score,
@@ -16,7 +16,7 @@ class NewCustomer extends Component {
   }
 
   render() {
-    const { image_url, name, score, str_time, id } = this.state;
+    const { image_url, name, score, str_time, user_id } = this.state;
     return (
       <div className="col-lg-3 col-sm-4 new-customer">
         <div className="card h-100">
@@ -32,7 +32,7 @@ class NewCustomer extends Component {
             <div className="row">
               <button
                 type="button"
-                onClick={() => this.props.callCustomer(id)}
+                onClick={() => this.props.callCustomer(user_id)}
                 className="btn btn-secondary btn-call"
               >
                 Phát trên loa
@@ -49,7 +49,7 @@ const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispacth => {
   return {
-    callCustomer: id => dispacth(callCustomer(id))
+    callCustomer: user_id => dispacth(callCustomer(user_id))
   };
 };
 export default connect(
