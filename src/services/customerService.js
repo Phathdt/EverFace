@@ -5,7 +5,7 @@ const apiUrl = Config.apiUrl;
 
 const getlistCustomer = async (q = "", page = 0, per_page = 10) => {
   return await http.get(
-    `${apiUrl}/list_users?q=${q}&_page=${page}&_limit=${per_page}`
+    `${apiUrl}/list_users?search=${q}&_page=${page}&per_page=${per_page}`
   );
 };
 
