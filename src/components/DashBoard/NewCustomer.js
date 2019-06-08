@@ -18,7 +18,7 @@ class NewCustomer extends Component {
   render() {
     const { image_url, name, score, str_time, id } = this.state;
     return (
-      <div className="col-lg-3 col-sm-4">
+      <div className="col-lg-3 col-sm-4 new-customer">
         <div className="card h-100">
           <img className="card-img-top" src={image_url} alt="" />
 
