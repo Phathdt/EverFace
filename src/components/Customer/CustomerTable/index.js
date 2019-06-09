@@ -23,7 +23,7 @@ const Table = ({ customers, isLoaded, deleteCustomer }) => {
                 <div className="row">
                   <div className="col-0 col-lg-4" />
                   <div className="col-8 col-lg-5">
-                    <img className="rounded" src={customer.image_url} alt="" />
+                    <img className="rounded" src={customer.avatar} alt="" />
                   </div>
                   <div className="col-3 col-lg-3">
                     {customer.group === 0 ? (

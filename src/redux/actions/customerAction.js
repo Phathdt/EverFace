@@ -1,6 +1,7 @@
 import Constant from "../constants/customerConstant";
 import service from "../../services/customerService";
 import { toast } from "react-toastify";
+import { convertPathToUrl } from "../../utils";
 
 export const getListCustomer = () => {
   return (dispatch, getState) => {
@@ -14,6 +15,16 @@ export const getListCustomer = () => {
     service
       .getlistCustomer(search, current_page, per_page)
       .then(response => {
+        let result = response.result;
+
+        result.forEach(customer => {
+          customer.avatar = convertPathToUrl(customer.avatar);
+
+          customer.image_path = customer.image_path.map(image_path =>
+            convertPathToUrl(image_path)
+          );
+        });
+
         dispatch({
           type: Constant.GET_SUCCESS_CUSTOMER_PAGE,
           customers: response.result,

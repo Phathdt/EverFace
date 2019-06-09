@@ -3,9 +3,9 @@ import Config from "../constants";
 
 const apiUrl = Config.apiUrl;
 
-const getlistCustomer = async (q = "", page = 0, per_page = 10) => {
+const getlistCustomer = async (search = "", page = 0, per_page = 10) => {
   return await http.get(
-    `${apiUrl}/list_users?search=${q}&_page=${page}&per_page=${per_page}`
+    `${apiUrl}/list_users?page=${page}&per_page=${per_page}&search=${search}`
   );
 };
 
