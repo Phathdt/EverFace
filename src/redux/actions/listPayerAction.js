@@ -10,6 +10,11 @@ export const getListPayer = () => {
     service
       .getListPayer()
       .then(response => {
+        response.forEach(customer => {
+          let image_base64 = customer.image_base64;
+
+          customer.image_base64 = `data:image/png;base64,${image_base64}`;
+        });
         dispatch({ type: Constant.GET_SUCCESS_PAYER, payers: response });
       })
       .catch(error => {
