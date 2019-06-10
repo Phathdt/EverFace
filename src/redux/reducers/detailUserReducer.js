@@ -30,7 +30,7 @@ const detailUserReducer = (state = initialState, action) => {
         user: user,
         checkin_list: checkin_list,
         current_page: paginate.page,
-        total_page: paginate.total,
+        total_page: Math.floor(paginate.total / paginate.per_page),
         per_page: paginate.per_page
       };
     case Constant.GET_FAILED_DETAIL_CUSTOMER:

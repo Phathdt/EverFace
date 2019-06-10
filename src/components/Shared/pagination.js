@@ -9,7 +9,7 @@ import {
 
 const PaginationPage = ({ isLoaded, current_page, total_page, changePage }) => {
   if (isLoaded) {
-    let list_page = Array.apply(null, { length: total_page }).map(
+    let list_page = Array.apply(null, { length: total_page + 1 }).map(
       Number.call,
       Number
     );
@@ -37,7 +37,7 @@ const PaginationPage = ({ isLoaded, current_page, total_page, changePage }) => {
               </MDBPageItem>
             ))}
             <MDBPageItem
-              disabled={current_page === total_page - 1}
+              disabled={current_page === total_page}
               onClick={() => changePage(current_page + 1)}
             >
               <MDBPageNav aria-label="Previous">

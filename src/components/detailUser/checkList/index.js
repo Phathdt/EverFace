@@ -7,6 +7,7 @@ import {
   changeAvatar,
   deleteAvatar
 } from "../../../redux/actions/detailUserAction";
+import Utils from "../../../utils";
 
 class CheckinList extends Component {
   render() {
@@ -37,7 +38,7 @@ class CheckinList extends Component {
                     <div className="col-lg-6">
                       <img
                         className="mini-image"
-                        src={checkin.image_url}
+                        src={Utils.convertPathToUrl(checkin.image_url)}
                         alt=""
                       />
                     </div>

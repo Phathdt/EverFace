@@ -23,7 +23,7 @@ const customerReducer = (state = initialState, action) => {
         isLoading: false,
         customers: customers,
         current_page: paginate.page,
-        total_page: paginate.total,
+        total_page: Math.floor(paginate.total / paginate.per_page),
         per_page: paginate.per_page
       };
     case Constant.GET_FAILED_CUSTOMER_PAGE:
