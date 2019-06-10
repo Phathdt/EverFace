@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import _ from "lodash";
 import { Field, reduxForm, formValueSelector } from "redux-form";
 import { resetForm, submitForm } from "../../../redux/actions/listPayerAction";
+import Utils from "../../../utils";
 
 class CForm extends Component {
   render() {
@@ -20,7 +21,7 @@ class CForm extends Component {
             <div className="card">
               <img
                 className="card-img-top"
-                src={image_base64 || "https://placehold.it/700x700"}
+                src={Utils.convertStringToBase64(image_base64)}
                 alt=""
               />
             </div>

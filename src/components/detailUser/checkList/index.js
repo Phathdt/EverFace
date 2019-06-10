@@ -44,9 +44,7 @@ class CheckinList extends Component {
                     <div className="col-lg-3" />
                   </div>
                 </td>
-                <td>
-                  {dateFormat(new Date(checkin.time), "dd/mm/yyyy, h:MM")}
-                </td>
+                <td>{dateFormat(checkin.time, "dd/mm/yyyy, h:MM")}</td>
                 <td>
                   <div className="row">
                     <div

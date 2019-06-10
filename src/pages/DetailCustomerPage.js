@@ -5,8 +5,8 @@ import Title from "../components/detailUser/Title";
 import Form from "../components/detailUser/formDetailUser";
 import CheckinList from "../components/detailUser/checkList";
 import Pagination from "../components/Shared/pagination";
-
 import { getDetailUser, changePage } from "../redux/actions/detailUserAction";
+
 class DetailCustomerPage extends Component {
   componentDidMount() {
     this.props.getDetailUser(this.props.match.params.id);

@@ -6,6 +6,7 @@ import {
   deleteCustomer
 } from "../../../redux/actions/detailUserAction";
 import { confirmAlert } from "react-confirm-alert";
+import Utils from "../../../utils";
 
 class CForm extends Component {
   deleteCustomer = user_id => {
@@ -40,7 +41,7 @@ class CForm extends Component {
               <div className="card">
                 <img
                   className="card-img-top"
-                  src={avatar || "https://placehold.it/700x700"}
+                  src={Utils.convertPathToUrl(avatar)}
                   alt=""
                 />
               </div>

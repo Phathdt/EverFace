@@ -3,9 +3,9 @@ import Config from "../constants";
 
 const apiUrl = Config.apiUrl;
 
-const getDetailUser = async (user_id, page = 0, per_page = 10) => {
+const getDetailUser = async (user_id, page = 0, per_page = 20) => {
   return await http.get(
-    `${apiUrl}/user_history?user_id=${user_id}&_page=${page}&_limit=${per_page}`
+    `${apiUrl}/user_history?user_id=${user_id}&page=${page}&per_page=${per_page}`
   );
 };
 

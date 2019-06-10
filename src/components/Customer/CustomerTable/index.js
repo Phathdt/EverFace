@@ -2,6 +2,7 @@ import React from "react";
 import { MDBTable, MDBTableBody, MDBTableHead, MDBIcon } from "mdbreact";
 import dateFormat from "dateformat";
 import { Link } from "react-router-dom";
+import Utils from "../../../utils";
 
 const Table = ({ customers, isLoaded, deleteCustomer }) => {
   if (isLoaded) {
@@ -23,7 +24,11 @@ const Table = ({ customers, isLoaded, deleteCustomer }) => {
                 <div className="row">
                   <div className="col-0 col-lg-4" />
                   <div className="col-8 col-lg-5">
-                    <img className="rounded" src={customer.avatar} alt="" />
+                    <img
+                      className="rounded"
+                      src={Utils.convertPathToUrl(customer.avatar)}
+                      alt=""
+                    />
                   </div>
                   <div className="col-3 col-lg-3">
                     {customer.group === 0 ? (
@@ -35,7 +40,7 @@ const Table = ({ customers, isLoaded, deleteCustomer }) => {
                   </div>
                 </div>
               </td>
-              <td>{dateFormat(new Date(customer.time), "dd/mm/yyyy, h:MM")}</td>
+              <td>{dateFormat(customer.time, "dd/mm/yyyy, h:MM")}</td>
               <td>
                 <div className="row">
                   <div className="col-lg-6">

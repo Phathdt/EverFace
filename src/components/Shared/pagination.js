@@ -20,7 +20,7 @@ const PaginationPage = ({ isLoaded, current_page, total_page, changePage }) => {
         <MDBCol>
           <MDBPagination className="mb-5 justify-content-center">
             <MDBPageItem
-              disabled={current_page === 1}
+              disabled={current_page === 0}
               onClick={() => changePage(current_page - 1)}
             >
               <MDBPageNav aria-label="Previous">
@@ -29,7 +29,7 @@ const PaginationPage = ({ isLoaded, current_page, total_page, changePage }) => {
             </MDBPageItem>
             {list_page.map((page, index) => (
               <MDBPageItem
-                active={page === current_page}
+                active={page === current_page + 1}
                 key={index}
                 onClick={() => changePage(page)}
               >
@@ -37,7 +37,7 @@ const PaginationPage = ({ isLoaded, current_page, total_page, changePage }) => {
               </MDBPageItem>
             ))}
             <MDBPageItem
-              disabled={current_page === total_page}
+              disabled={current_page === total_page - 1}
               onClick={() => changePage(current_page + 1)}
             >
               <MDBPageNav aria-label="Previous">

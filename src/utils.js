@@ -8,3 +8,12 @@ export const convertPathToUrl = path => {
 
   return `${apiUrl}/img/${pathConverted}`;
 };
+
+export const convertStringToBase64 = string => {
+  return `data:image/png;base64,${string}`;
+};
+
+export default {
+  convertPathToUrl,
+  convertStringToBase64
+};

@@ -13,6 +13,7 @@ export const getDetailUser = user_id => {
       .then(response => {
         let { result, paginate } = response;
         let { user, checkin_list } = result;
+
         dispatch({
           type: Constant.GET_SUCCESS_DETAIL_CUSTOMER,
           paginate: paginate,

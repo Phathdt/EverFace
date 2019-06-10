@@ -10,11 +10,6 @@ export const getListPayer = () => {
     service
       .getListPayer()
       .then(response => {
-        response.forEach(customer => {
-          let image_base64 = customer.image_base64;
-
-          customer.image_base64 = `data:image/png;base64,${image_base64}`;
-        });
         dispatch({ type: Constant.GET_SUCCESS_PAYER, payers: response });
       })
       .catch(error => {
@@ -51,9 +46,13 @@ export const submitForm = () => {
         .filter(payer => _.includes(selectPayerIds, payer.id))
         .map(payer => payer.image_base64);
 
+      formData.embedding = payers
+        .filter(payer => _.includes(selectPayerIds, payer.id))
+        .map(payer => payer.embedding);
+
       service
         .updateUser(formData)
-        .then(response => {
+        .then(_response => {
           dispatch({ type: Constant.UPDATE_USER_SUCCESS });
           toast.success("Cập nhật thông tin thành công");
           dispatch(getListPayer());
@@ -66,7 +65,7 @@ export const submitForm = () => {
 
       service
         .createUser(formData)
-        .then(response => {
+        .then(_response => {
           dispatch({ type: Constant.CREATE_USER_SUCCESS });
           toast.success("Tạo thông tin thành công");
           dispatch(getListPayer());

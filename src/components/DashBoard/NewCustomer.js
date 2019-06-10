@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { callCustomer } from "../../redux/actions/listNewCustomerAction";
+import Utils from "../../utils";
 
 class NewCustomer extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class NewCustomer extends Component {
 
     this.state = {
       user_id: props.customer.user_id,
-      image_url: props.customer.image_url,
+      image_url: Utils.convertPathToUrl(props.customer.image_url),
       name: props.customer.name,
       score: props.customer.score,
       str_time: props.customer.str_time

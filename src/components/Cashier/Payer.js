@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { selectPayer } from "../../redux/actions/listPayerAction";
+import Utils from "../../utils";
 
 class Payer extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class Payer extends Component {
     this.state = {
       id: props.payer.id,
       user_id: props.payer.user_id,
-      image_base64: props.payer.image_base64,
+      image_base64: Utils.convertStringToBase64(props.payer.image_base64),
       name: props.payer.name,
       score: props.payer.score,
       active: props.active

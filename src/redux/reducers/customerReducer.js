@@ -7,7 +7,7 @@ const initialState = {
   current_page: 0,
   total_page: 0,
   search: "",
-  per_page: 0
+  per_page: 20
 };
 
 const customerReducer = (state = initialState, action) => {

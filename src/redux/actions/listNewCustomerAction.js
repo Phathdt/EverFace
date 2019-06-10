@@ -1,6 +1,5 @@
 import Constant from "../constants/listNewCustomerConstant";
 import service from "../../services/listNewCustomerUserService";
-import { convertPathToUrl } from "../../utils";
 
 export const getListNewCustomer = () => {
   return (dispatch, getState) => {
@@ -9,11 +8,6 @@ export const getListNewCustomer = () => {
     service
       .getListNewCustomer()
       .then(response => {
-        // convert path to url
-        response.forEach(customer => {
-          customer.image_url = convertPathToUrl(customer.image_url);
-        });
-
         dispatch({ type: Constant.GET_SUCCESS_CUSTOMER, customers: response });
       })
       .catch(_error => {
