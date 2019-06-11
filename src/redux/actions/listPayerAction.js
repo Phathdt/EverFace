@@ -32,7 +32,12 @@ export const resetForm = () => {
 
 export const submitForm = () => {
   return (dispatch, getState) => {
-    let { id, image_base64, ...formData } = getState().form.formPayer.values;
+    let {
+      id,
+      image_base64,
+      embedding,
+      ...formData
+    } = getState().form.formPayer.values;
 
     let { selectPayerIds } = getState().listPayer;
 
@@ -62,6 +67,7 @@ export const submitForm = () => {
         });
     } else {
       formData.image_base64 = [image_base64];
+      formData.embedding = [embedding];
 
       service
         .createUser(formData)
