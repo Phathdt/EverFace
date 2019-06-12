@@ -10,7 +10,14 @@ const getlistCustomer = async (search = "", page = 0, per_page = 20) => {
 };
 
 const deleteCustomer = async user_id => {
-  return await http.delete(`${apiUrl}/user`, { user_id: user_id });
+  return await fetch(`${apiUrl}/user`, {
+    method: "DELETE",
+    headers: {
+      Accept: "*/*",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ user_id: user_id })
+  });
 };
 
 export default {
