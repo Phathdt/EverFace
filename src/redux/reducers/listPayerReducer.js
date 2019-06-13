@@ -48,7 +48,7 @@ const listPayerReducer = (state = initialState, action) => {
         } // TH exist user
         else {
           if (_.includes(selectPayerIds, selectPayer.id)) {
-            selectPayerIds.shift(0);
+            selectPayerIds = selectPayerIds.filter(id => id !== selectPayer.id);
           } else {
             let firstselectPayerId = selectPayerIds[0];
 
