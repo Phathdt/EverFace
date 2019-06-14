@@ -5,6 +5,15 @@
 ```
 yarn global add create-react-app
 yarn global add serve
+
+cd your_source_code_path
+yarn install
+```
+
+### `Development`
+
+```
+yarn start
 ```
 
 ### `Config`
